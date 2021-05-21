@@ -213,9 +213,10 @@ export default class ContentsList extends Component<PropsType, StateType> {
   };
 
   renderOverlay = () => {
-    console.log(this.props.procfilePath)
     if (this.props.procfilePath) {
-      let processes = this.state.processes ? Object.keys(this.state.processes) : [];
+      let processes = this.state.processes
+        ? Object.keys(this.state.processes)
+        : [];
       return (
         <Overlay>
           <BgOverlay
@@ -294,7 +295,6 @@ export default class ContentsList extends Component<PropsType, StateType> {
                 this.state.processes &&
                 Object.keys(this.state.processes).length > 0
               ) {
-                console.log('setting procfile')
                 this.props.setProcfilePath("./Procfile");
               }
             }}
@@ -332,7 +332,7 @@ ContentsList.contextType = Context;
 const FlexWrapper = styled.div`
   position: absolute;
   bottom: 28px;
-  left: 185px;
+  left: 195px;
   display: flex;
   align-items: center;
 `;
@@ -482,7 +482,7 @@ const UseButton = styled.div`
   background: #616feecc;
   font-weight: 500;
   padding: 10px 15px;
-  border-radius: 3px;
+  border-radius: 100px;
   box-shadow: 0 2px 5px 0 #00000030;
   cursor: pointer;
   :hover {

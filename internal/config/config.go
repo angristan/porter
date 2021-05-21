@@ -14,6 +14,7 @@ type Conf struct {
 	Db     DBConf
 	K8s    K8sConf
 	Redis  RedisConf
+	Capabilities CapConf
 }
 
 // ServerConf is the server configuration
@@ -31,7 +32,8 @@ type ServerConf struct {
 	IsTesting            bool          `env:"IS_TESTING,default=false"`
 	AppRootDomain        string        `env:"APP_ROOT_DOMAIN,default=porter.run"`
 
-	DefaultHelmRepoURL string `env:"HELM_REPO_URL,default=https://porter-dev.github.io/chart-repo/"`
+	DefaultApplicationHelmRepoURL string `env:"HELM_APP_REPO_URL,default=https://charts.dev.getporter.dev"`
+	DefaultAddonHelmRepoURL       string `env:"HELM_ADD_ON_REPO_URL,default=https://chart-addons.dev.getporter.dev"`
 
 	GithubClientID     string `env:"GITHUB_CLIENT_ID"`
 	GithubClientSecret string `env:"GITHUB_CLIENT_SECRET"`
@@ -68,6 +70,11 @@ type DBConf struct {
 // K8sConf is the global configuration for the k8s agents
 type K8sConf struct {
 	IsTesting bool `env:"K8S_IS_TESTING,default=false"`
+}
+
+type CapConf struct {
+	Provisioner bool `env:"PROVISIONER_ENABLED,default=true"`
+	Github bool `env:"GITHUB_ENABLED,default=true"`
 }
 
 // FromEnv generates a configuration from environment variables
